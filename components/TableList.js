@@ -1,5 +1,12 @@
 import React from "react";
 import axios from 'axios';
+// components
+import Grid from './GridAdvance/Grid';
+
+// redux connect
+import {connect} from 'react-redux';
+import {resetGrid, updateGrid} from '../store'
+
 class TableList extends React.Component{
   constructor(props){
     super(props);
@@ -8,6 +15,14 @@ class TableList extends React.Component{
 
   componentDidMount () {
     // this.getData();
+    this.handleInput()
+  }
+
+  handleInput = () => {
+    const {dispatch} = this.props;
+    const header = ["a","b","c"]
+    const csv = [{"a":1,"b":2,"c":3}]
+    dispatch(updateGrid({data:{header:header,body:csv}}));
   }
 
   async getData(){
@@ -29,11 +44,18 @@ class TableList extends React.Component{
   render(){
     return(
       <>
-        Hello world2
+        <Grid
+          tableHeader={this.props.gridPage.data.header}
+          tableData={this.props.gridPage.data.body}
+        />
       </>
     )
   }
 }
 
+function mapStateToProps (state) {
+  const {gridPage} = state;
+  return gridPage
+}
 
-export default TableList;
+export default connect(mapStateToProps)(TableList);
