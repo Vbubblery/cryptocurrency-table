@@ -1,0 +1,28 @@
+{
+  "name": "create-next-example-app",
+  "scripts": {
+    "dev": "node app.js",
+    "build": "next build",
+    "start": "node app.js",
+    "postinstall": "next build"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.9.1",
+    "axios": "^0.18.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "next": "^7.0.2",
+    "next-images": "^1.0.4",
+    "next-routes": "^1.4.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-jss": "^8.6.1",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "styled-jsx": "^3.2.0",
+    "typeface-roboto": "^0.0.54"
+  }
+}
