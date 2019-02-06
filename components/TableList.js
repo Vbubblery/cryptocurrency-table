@@ -14,18 +14,11 @@ class TableList extends React.Component{
   };
 
   componentDidMount () {
-    // this.getData();
-    this.handleInput()
+    this.handleInput();
   }
 
-  handleInput = () => {
+  handleInput = async() => {
     const {dispatch} = this.props;
-    const header = ["a","b","c"]
-    const csv = [{"a":1,"b":2,"c":3}]
-    dispatch(updateGrid({data:{header:header,body:csv}}));
-  }
-
-  async getData(){
     const options = {
       method: 'get',
       url:'/api/cryptocurrency/listings/latest',
@@ -36,7 +29,17 @@ class TableList extends React.Component{
       }
     };
     const res = await axios(options);
-    console.log(res)
+    let data = res.data.data;
+    data = data.map(i=>{return {"id":i["id"],"name":i['name'],...i["quote"][options.params.convert]}})
+    const header = ["id","name","price","market_cap","volume_24h","percent_change_1h","percent_change_24h","percent_change_7d","last_updated"];
+
+    dispatch(updateGrid({data:{header:header,body:data}}));
+  }
+
+  async getData(){
+
+
+    if(res.status.error_code===0) return res.data
   }
 
   componentWillUnmount () {}

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import {TableRow,TableBody,TableCell,TextField,Typography,Checkbox} from '@material-ui/core';
+import {TableRow,TableBody,TableCell,TextField,Typography,Checkbox,Avatar} from '@material-ui/core';
 
 import {stableSort,getSorting} from '../../lib/gridUtils';
 
@@ -17,10 +17,6 @@ class GridBody extends React.Component{
 
   componentWillUnmount () {}
 
-  checkOnChange = id => event =>{
-    this.props.handleCheckClick(id)
-  }
-
   render(){
     const {tableData,tableHeader,rowsPerPage,page,order,orderBy} = this.props;
     return(
@@ -33,7 +29,10 @@ class GridBody extends React.Component{
                 {tableHeader.map((i,key)=>{
                   return(
                     <TableCell align="left" key={key}>
-                      <Typography variant="body2">{row[i]}</Typography>
+                      {i=='name'?
+                         (<><Avatar src={`https://s2.coinmarketcap.com/static/img/coins/16x16/${row["id"]}.png`} /><Typography variant="body2">{row[i]}</Typography></>):
+                         (<Typography variant="body2">{row[i]}</Typography>)
+                      }
                     </TableCell>)
                 })}
               </TableRow>

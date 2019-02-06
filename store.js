@@ -35,6 +35,7 @@ const reducers = combineReducers({
 //Actions
 export const updateGrid = (props) => dispatch => {
   return dispatch({ type: gridActionTypes.UPDATE, data:props.data })
+  // console.log(props.data)
 }
 
 export const resetGrid = (props) => dispatch => {
