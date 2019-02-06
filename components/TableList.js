@@ -50,6 +50,12 @@ class TableList extends React.Component{
     this.handleInput();
   }
 
+  handleFilterChange = async props => {
+    const {dispatch} = this.props;
+    await dispatch(updateFilter({filter:props}));
+    this.handleInput();
+  }
+
   componentWillUnmount () {}
 
   render(){
