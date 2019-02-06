@@ -5,7 +5,7 @@ import Grid from './GridAdvance/Grid';
 
 // redux connect
 import {connect} from 'react-redux';
-import {updateGrid,updateCurrency} from '../store'
+import {updateGrid,updateCurrency,updateFilter} from '../store'
 
 const currencies = [
   'USD',
@@ -38,16 +38,15 @@ class TableList extends React.Component{
     // };
     // const res = await axios(options);
     // let data = res.data.data;
-    console.log(this.props.gridPage.currency);
     // data = data.map(i=>{return {"id":i["id"],"name":i['name'],...i["quote"][options.params.convert]}})
     // const header = ["id","name","price","market_cap","volume_24h","percent_change_1h","percent_change_24h","percent_change_7d","last_updated"];
-
+    //
     // dispatch(updateGrid({data:{header:header,body:data}}));
   }
 
-  handleCurrencyChange = props => {
+  handleCurrencyChange = async props => {
     const {dispatch} = this.props;
-    dispatch(updateCurrency({currency:props}));
+    await dispatch(updateCurrency({currency:props}));
     this.handleInput();
   }
 

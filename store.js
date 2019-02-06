@@ -8,13 +8,15 @@ const initialState = {
       header:[],
       body:[],
     },
-    currency:"USD"
+    currency:"USD",
+    filter:"",
   }
 };
 
 const gridActionTypes = {
   UPDATE: 'UPDATE',
-  UPDATECURRENCY:'UPDATECURRENCY'
+  UPDATECURRENCY:'UPDATECURRENCY',
+  FILTER:'FILTER'
 };
 
 // Reducers
@@ -22,8 +24,8 @@ const gridReducer = (state = initialState, action) => { // state include the cur
   switch (action.type) {
     case gridActionTypes.UPDATE:
       return {...state, gridPage:{...state.gridPage,data:action.data}}
-    case gridActionTypes.UPDATECURRENCY:
-      return {...state, gridPage:{...state.gridPage,currency:action.data}}
+    case gridActionTypes.FILTER:
+      return {...state, gridPage:{...state.gridPage,filter:action.data}}
     default: return state
   }
 }
@@ -34,15 +36,10 @@ const reducers = combineReducers({
 });
 
 //Actions
-export const updateGrid = (props) => dispatch => {
-  return dispatch({ type: gridActionTypes.UPDATE, data:props.data })
-  // console.log(props.data)
-}
-export const updateCurrency = (props) => dispatch => {
-  // console.log(props);
-  return dispatch({ type: gridActionTypes.UPDATECURRENCY, data:props.currency })
-  // console.log(props.data)
-}
+export const updateGrid = (props) => dispatch => dispatch({ type: gridActionTypes.UPDATE, data:props.data })
+export const updateCurrency = (props) => dispatch => dispatch({ type: gridActionTypes.UPDATECURRENCY, data:props.currency })
+export const updateFilter = (props) => dispatch => dispatch({ type: gridActionTypes.FILTER, data:props.filter })
+
 
 export const initializeStore = (initialState = initialState) => {
   return createStore(reducers, initialState,composeWithDevTools(applyMiddleware(thunkMiddleware)))

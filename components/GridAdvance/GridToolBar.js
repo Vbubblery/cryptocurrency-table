@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import {Toolbar,Typography,Divider,MenuItem,Select} from '@material-ui/core';
-
-import SearchIcon from '@material-ui/icons/Search';
+import {Toolbar,Typography,Divider,MenuItem,Select,Paper,InputBase} from '@material-ui/core';
 
 const toolbarStyles = theme => ({
   root: {
@@ -13,6 +11,18 @@ const toolbarStyles = theme => ({
   },
   title: {
     flex: '0 0 auto',
+  },
+  input: {
+    marginLeft: 8,
+    flex: 1,
+  },
+  iconButton: {
+    padding: 10,
+  },
+  divider: {
+    width: 1,
+    height: 28,
+    margin: 4,
   },
 });
 
@@ -44,8 +54,10 @@ class GridToolBar extends React.Component{
     const {classes,currencies,currency} = this.props;
     return(
       <Toolbar className={classes.root}>
-        <Typography component="p" style={{flex: 1,}} variant="h6" align="left" id="tableTitle">Coinmarketcap</Typography>
-        <div>
+        <Typography component="p" variant="h6" style={{flex:0.5}} id="tableTitle">Coinmarketcap</Typography>
+        <Paper style={{display:'flex',flex:0.5}} elevation={1} >
+          <InputBase className={classes.input} placeholder="Filter the result" />
+          <Divider className={classes.divider} />
           <Select
             value={currency}
             onChange={this.handleChange}
@@ -57,7 +69,7 @@ class GridToolBar extends React.Component{
               </MenuItem>
             ))}
           </Select>
-        </div>
+        </Paper>
       </Toolbar>
     )
   }

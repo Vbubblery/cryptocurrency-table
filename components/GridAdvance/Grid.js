@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import {Paper,Table,TableHead,TableRow,TableBody,TableCell,TablePagination} from '@material-ui/core';
+import {Paper,Divider,Table,TableHead,TableRow,TableBody,TableCell,TablePagination} from '@material-ui/core';
 
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
@@ -77,6 +77,7 @@ class Grid extends React.Component{
       <>
         <Paper className={this.classes.Responsive}>
           <GridToolBar handleCurrencyChange={handleCurrencyChange} currencies={currencies} currency={currency}/>
+          <Divider light />
           <Table className={this.classes.table}>
             <GridHeader
               tableHeader={tableHeader}
