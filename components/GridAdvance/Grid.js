@@ -8,12 +8,13 @@ import classNames from 'classnames';
 
 import GridHeader from './GridHeader';
 import GridBody from './GridBody';
+import GridToolBar from './GridToolBar';
 
 import {findById} from '../../lib/gridUtils';
 
 const tableStyles = theme => ({
   Responsive: {
-    width: "100%",
+    width: "60%",
     marginTop: theme.spacing.unit * 3,
     overflowX: "auto",
   },
@@ -70,11 +71,12 @@ class Grid extends React.Component{
   };
 
   render(){
-    const {tableHeader,tableData} = this.props;
+    const {tableHeader,tableData,handleCurrencyChange,currencies,currency} = this.props;
     const {rowsPerPage, page, order, orderBy} = this.state;
     return(
       <>
         <Paper className={this.classes.Responsive}>
+          <GridToolBar handleCurrencyChange={handleCurrencyChange} currencies={currencies} currency={currency}/>
           <Table className={this.classes.table}>
             <GridHeader
               tableHeader={tableHeader}
