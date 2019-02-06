@@ -23,6 +23,11 @@ class GridHeader extends React.Component{
     return(
       <TableHead>
         <TableRow>
+          <TableCell>
+            123
+          </TableCell>
+        </TableRow>
+        <TableRow>
           {tableHeader.map(item=>{
             return(
               <TableCell

@@ -14,7 +14,7 @@ class TableList extends React.Component{
   };
 
   componentDidMount () {
-    this.handleInput();
+    // this.handleInput();
   }
 
   handleInput = async() => {
@@ -25,7 +25,7 @@ class TableList extends React.Component{
       params:{
         start: 1,
         limit: 5000,
-        convert: 'USD'
+        convert: 'CNY'
       }
     };
     const res = await axios(options);
