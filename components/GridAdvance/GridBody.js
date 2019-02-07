@@ -20,9 +20,7 @@ class GridBody extends React.Component{
   render(){
     const {tableData,tableHeader,rowsPerPage,page,order,orderBy,filter} = this.props;
     let data;
-    if(filter!=''){
-      data = tableData.filter(i=>{return new RegExp(filter).test(i['name'])})
-    }else data = tableData
+    filter!=''?(data = tableData.filter(i=>{return new RegExp(filter).test(i['name'])})):(data = tableData)
     return(
       <TableBody >
         {stableSort(data, getSorting(order, orderBy))

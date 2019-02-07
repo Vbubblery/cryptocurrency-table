@@ -73,7 +73,6 @@ class Grid extends React.Component{
   render(){
     const {tableHeader,tableData,handleCurrencyChange,handleFilterChange,currencies,currency,filter} = this.props;
     const {rowsPerPage, page, order, orderBy} = this.state;
-    console.log(filter)
     return(
       <>
         <Paper className={this.classes.Responsive}>
