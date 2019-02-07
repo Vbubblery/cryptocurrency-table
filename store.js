@@ -24,6 +24,8 @@ const gridReducer = (state = initialState, action) => { // state include the cur
   switch (action.type) {
     case gridActionTypes.UPDATE:
       return {...state, gridPage:{...state.gridPage,data:action.data}}
+      case gridActionTypes.UPDATECURRENCY:
+        return {...state, gridPage:{...state.gridPage,currency:action.data}}
     case gridActionTypes.FILTER:
       return {...state, gridPage:{...state.gridPage,filter:action.data}}
     default: return state

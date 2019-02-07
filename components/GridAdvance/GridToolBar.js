@@ -49,14 +49,17 @@ class GridToolBar extends React.Component{
   handleChange = event => {
     this.props.handleCurrencyChange(event.target.value)
   };
+  handleInputChange = event =>{
+    this.props.handleFilterChange(event.target.value)
+  }
 
   render(){
-    const {classes,currencies,currency} = this.props;
+    const {classes,currencies,filter,currency} = this.props;
     return(
       <Toolbar className={classes.root}>
         <Typography component="p" variant="h6" style={{flex:0.5}} id="tableTitle">Coinmarketcap</Typography>
         <Paper style={{display:'flex',flex:0.5}} elevation={1} >
-          <InputBase className={classes.input} placeholder="Filter the result" />
+          <InputBase className={classes.input} value={filter} onChange={this.handleInputChange} placeholder="Filter the result" />
           <Divider className={classes.divider} />
           <Select
             value={currency}

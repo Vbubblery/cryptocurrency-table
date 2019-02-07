@@ -18,10 +18,14 @@ class GridBody extends React.Component{
   componentWillUnmount () {}
 
   render(){
-    const {tableData,tableHeader,rowsPerPage,page,order,orderBy} = this.props;
+    const {tableData,tableHeader,rowsPerPage,page,order,orderBy,filter} = this.props;
+    let data;
+    if(filter!=''){
+      data = tableData.filter(i=>{return new RegExp(filter).test(i['name'])})
+    }else data = tableData
     return(
       <TableBody >
-        {stableSort(tableData, getSorting(order, orderBy))
+        {stableSort(data, getSorting(order, orderBy))
           .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           .map((row,key)=>{
             return(

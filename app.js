@@ -20,7 +20,7 @@ app.prepare().then(() => {
       uri: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
       qs: req.query,
       headers: {
-        'X-CMC_PRO_API_KEY': '2d865ef2-013b-48ee-b7fc-deb3713922b3'
+        'X-CMC_PRO_API_KEY': '0a848c76-2433-4c5e-b4cf-7be93747a46e'
       },
       json: true,
       gzip: true

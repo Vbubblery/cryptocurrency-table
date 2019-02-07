@@ -71,12 +71,13 @@ class Grid extends React.Component{
   };
 
   render(){
-    const {tableHeader,tableData,handleCurrencyChange,currencies,currency} = this.props;
+    const {tableHeader,tableData,handleCurrencyChange,handleFilterChange,currencies,currency,filter} = this.props;
     const {rowsPerPage, page, order, orderBy} = this.state;
+    console.log(filter)
     return(
       <>
         <Paper className={this.classes.Responsive}>
-          <GridToolBar handleCurrencyChange={handleCurrencyChange} currencies={currencies} currency={currency}/>
+          <GridToolBar handleCurrencyChange={handleCurrencyChange} handleFilterChange={handleFilterChange} currencies={currencies} currency={currency} filter={filter}/>
           <Divider light />
           <Table className={this.classes.table}>
             <GridHeader
@@ -91,6 +92,7 @@ class Grid extends React.Component{
               tableData={tableData}
               page={page}
               order={order}
+              filter={filter}
               orderBy={orderBy}
               rowsPerPage={rowsPerPage}
               handleCheckClick={this.handleCheckClick}
