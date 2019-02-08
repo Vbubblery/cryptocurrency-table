@@ -17,6 +17,13 @@ class GridBody extends React.Component{
 
   componentWillUnmount () {}
 
+  treatData = (str) =>{
+    let result;
+    swithch(str){
+
+    }
+  }
+
   render(){
     const {tableData,tableHeader,rowsPerPage,page,order,orderBy,filter} = this.props;
     let data;
